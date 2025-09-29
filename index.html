@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>济南市市中区泉海学校2024级7班三组门户网站</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="pdf.js"></script>
 </head>
 <body>
     <header>
@@ -29,13 +28,8 @@
         <section id="news">
             <h2>新闻</h2>
             <ul>
-                <li><a href="#" onclick="loadPDF('news.pdf')">2024年9月1日：新学期开学典礼</a></li>
-                <li><a href="#" onclick="loadPDF('news.pdf')">2024年9月15日：班级第一次班会</a></li>
-                <li><a href="#" onclick="loadPDF('news.pdf')">2024年9月20日：校园运动会报名开始</a></li>
+                <li><a href="./news.pdf" target="_blank">2025年济南市市中区泉海学校秋季全员运动会 ——以运动之名，赴青春之约</a></li>
             </ul>
-            <div id="pdf-viewer" style="display: none; margin-top: 20px;">
-                <canvas id="pdf-canvas"></canvas>
-            </div>
         </section>
 
         <section id="about">
@@ -52,31 +46,5 @@
     <footer>
         <p>&copy; 2024 济南市市中区泉海学校2024级7班三组</p>
     </footer>
-
-    <script>
-        function loadPDF(url) {
-            document.getElementById('pdf-viewer').style.display = 'block';
-            
-            // 加载PDF文件
-            PDFJS.getDocument(url).promise.then(function(pdf) {
-                pdf.getPage(1).then(function(page) {
-                    var scale = 1.5;
-                    var viewport = page.getViewport({ scale: scale });
-                    
-                    var canvas = document.getElementById('pdf-canvas');
-                    var context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    
-                    page.render({
-                        canvasContext: context,
-                        viewport: viewport
-                    });
-                });
-            });
-            
-            return false;
-        }
-    </script>
 </body>
 </html>
